@@ -1,2 +1,0 @@
-test
-hello 2nd time
