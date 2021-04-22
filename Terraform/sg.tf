@@ -1,6 +1,6 @@
 
 resource "aws_security_group" "sg" {
-  name        = "\DevOpsProject"
+  name        = "DevOpsProject"
 
   ingress {
     from_port   = 443
