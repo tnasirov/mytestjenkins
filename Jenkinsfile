@@ -1,13 +1,12 @@
-  
+    
 pipeline {
     agent any
     stages {
         stage('Init and plan') {
             steps {
-                sh 'cd ./Terraform/'
-                sh 'echo $(ls -l)'
-                echo 'Terraform init.....'
-                sh 'terraform init'
+                dir ('Terraform') {
+                    echo 'Terraform init.....'
+                    sh 'terraform init'
             }
         }
         stage('Plan') {
