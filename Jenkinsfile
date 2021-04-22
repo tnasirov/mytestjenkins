@@ -7,6 +7,7 @@ pipeline {
                 dir ('Terraform') {
                     echo 'Terraform init.....'
                     sh 'terraform init'
+                }
             }
         }
         stage('Plan') {
@@ -14,5 +15,6 @@ pipeline {
                 sh 'Terraform Plan....'
                 sh 'terraform plan'
             }
+        }
     }
 }
