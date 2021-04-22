@@ -2,24 +2,12 @@
 pipeline {
     agent any
     stages {
-        stage('Test') {
+        stage('Init and plan') {
             steps {
-                sh 'echo "Fail!"; exit 1'
+                sh 'echo $(pwd)'
+                sh 'terraform init'
+                sh 'terraform plan'
             }
-        }
-    }
-    post {
-        always {
-            echo 'I will always get executed :D'
-        }
-        success {
-            echo 'I will only get executed if this success'
-        }
-        failure {
-            echo 'I will only get executed if this fails'
-        }
-        unstable {
-            echo 'I will only get executed if this is unstable'
         }
     }
 }
