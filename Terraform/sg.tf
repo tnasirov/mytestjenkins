@@ -1,5 +1,5 @@
 
-resource "aws_security_group" "var_demo" {
+resource "aws_security_group" "sg" {
   name        = "\DevOpsProject"
 
   ingress {
