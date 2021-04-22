@@ -5,7 +5,7 @@ pipeline {
         stage('Init and plan') {
             steps {
                 sh 'echo $(ls -l)'
-                sh 'cd Terraform'
+                sh 'cd ./Terraform/'
                 echo 'Terraform init.....'
                 sh 'terraform init'
             }
