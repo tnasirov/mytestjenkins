@@ -4,17 +4,13 @@ pipeline {
     stages {
         stage('Init and plan') {
             steps {
-                dir ('Terraform') {
-                    echo 'Terraform init.....'
-                    sh 'terraform init'
-                    sh 'terraform plan'
-                }
+                echo 'Terraform init.....'
+                sh 'terraform init'
             }
         }
         stage('Plan') {
             steps {
-                sh 'echo $(pwd)'
-                sh 'Terraform Plan....'
+                echo 'Terraform Planning....'
                 sh 'terraform plan'
             }
         }
