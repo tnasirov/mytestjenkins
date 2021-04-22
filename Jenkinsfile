@@ -13,6 +13,7 @@ pipeline {
         }
         stage('Plan') {
             steps {
+                sh 'echo $(pwd)'
                 sh 'Terraform Plan....'
                 sh 'terraform plan'
             }
