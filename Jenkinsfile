@@ -8,6 +8,7 @@ pipeline {
     stages {
         stage('Init') {
             steps {
+                sh 'echo $AWS_ACCESS_KEY_ID'
                 echo 'Terraform init.....'
                 sh 'terraform init'
             }
