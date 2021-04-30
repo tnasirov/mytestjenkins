@@ -8,7 +8,6 @@ pipeline {
     stages {
         stage('Init') {
             steps {
-                sh 'echo $AWS_ACCESS_KEY_ID'
                 echo 'Terraform init.....'
                 sh 'terraform init'
             }
@@ -16,8 +15,27 @@ pipeline {
         stage('Plan') {
             steps {
                 echo 'Terraform Planning....'
-                sh 'terraform plan'
+                sh 'terraform plan -out 1-tfplan'
+            }
+        }
+         stage('Apply'){
+            steps {
+                script{
+                    def apply = false
+                    try {
+                        input message: 'confirm apply', ok: 'Apply Config'
+                        apply = true
+                    }
+                    catch (err) {
+                        apply = false
+                            sh "terraform destroy -auto-approve"
+                        }
+                        currentBuild.result = 'UNSTABLE'
+                    if(apply){
+                            sh 'terraform apply 1-tfplan -auto-approve'
+                        }
+                    }
+                }
             }
         }
     }
-}
