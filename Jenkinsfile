@@ -9,13 +9,13 @@ pipeline {
         stage('Init') {
             steps {
                 echo 'Terraform init.....'
-                sh 'terraform init'
+                sh 'terraform init -input=false'
             }
         }
         stage('Plan') {
             steps {
                 echo 'Terraform Planning....'
-                sh 'terraform plan -out 1.tfplan'
+                sh 'terraform plan -out=tfplan'
             }
         }
          stage('Apply'){
@@ -32,7 +32,7 @@ pipeline {
                         }
                         currentBuild.result = 'UNSTABLE'
                     if(apply){
-                            sh 'terraform apply 1.tfplan -auto-approve'
+                            sh 'terraform apply tfplan'
                         }
                     }
                 }
