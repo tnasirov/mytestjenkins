@@ -29,8 +29,9 @@ pipeline {
                     catch (err) {
                         apply = false
                             sh "terraform destroy -auto-approve"
+                            currentBuild.result = 'UNSTABLE'
                         }
-                        currentBuild.result = 'UNSTABLE'
+
                     if(apply){
                             sh 'terraform apply tfplan'
                         }
