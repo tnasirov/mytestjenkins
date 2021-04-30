@@ -15,7 +15,7 @@ pipeline {
         stage('Plan') {
             steps {
                 echo 'Terraform Planning....'
-                sh 'terraform plan -out 1-tfplan'
+                sh 'terraform plan -out 1.tfplan'
             }
         }
          stage('Apply'){
@@ -32,7 +32,7 @@ pipeline {
                         }
                         currentBuild.result = 'UNSTABLE'
                     if(apply){
-                            sh 'terraform apply 1-tfplan -auto-approve'
+                            sh 'terraform apply 1.tfplan -auto-approve'
                         }
                     }
                 }
