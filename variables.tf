@@ -1,3 +1,3 @@
 variable "allow_ip" {
-  default = "10.10.10.2/32"
+  default = "10.10.20.2/32"
 }
